@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" lang="en">
+    <title>Gefahr - Random</title>
+    <link rel="stylesheet" type="text/css" href="/styles/random.css" />
+</head>
+
+<body>
+    <div class="container">
+        <p id="category"></p>
+        <p id="clue_text"></p>
+        <input type="text" placeholder="Enter Response"></input>
+        <p id="answer_text"></p>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const category = document.querySelector('#category');
+    const clueText = document.querySelector('#clue_text');
+    const answerText = document.querySelector('#answer_text');
+    let clue;
+
+    function getData() {
+        fetch('http://127.0.0.1:3000/random_question')
+            .then((res) => res.json())
+            .then((data) => {
+                clue = {
+                    clue: data.clue,
+                    answer: data.answer,
+                    category: data.category
+                }
+
+                category.textContent = clue.category;
+                clueText.textContent = clue.clue;
+                answerText.textContent = clue.answer;
+            })
+            .catch((e) => {
+                console.log(e.message);
+            });
+    }
+
+    getData();
+</script>
