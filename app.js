@@ -10,8 +10,11 @@ let db = new sqlite3.Database('clues.db', sqlite3.OPEN_READONLY, (err) => {
     console.log("Connected to SQLite database.");
 });
 
+app.use(express.static(__dirname));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/index.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/views/index.html')));
+
+app.get('/random', (req, res) => res.sendFile(path.join(__dirname + '/views/random.html')));
 
 app.get('/random_question', (req, res) => {
     //Get a random clue id
@@ -29,7 +32,8 @@ app.get('/random_question', (req, res) => {
             console.log(err.message);
             throw err;
         }
-        res.send(row);
+        //res.send(row);
+        res.json(row);
     });
 });
 
