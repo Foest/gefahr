@@ -12,4 +12,31 @@
 .container{
     display: grid;
     background-color: rgb(6, 6, 179);
+    justify-items: center;
+}
+
+#btn-next{
+    background-color: rgb(112, 112, 202);
+    color: inherit;
+    border: 1px solid;
+    padding: 0;
+    margin: 1px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+#btn-submit{
+    background-color: rgb(112, 112, 202);
+    color: inherit;
+    border: 1px solid;
+    padding: 0;
+    margin: 1px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+#response{
+    color: rgb(6, 6, 179);
 }
