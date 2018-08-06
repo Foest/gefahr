@@ -20,7 +20,7 @@ app.get('/random_question', (req, res) => {
     //Get a random clue id
     const rand_id = Math.floor(Math.random() * 215815) + 1;
 
-    const sql = `SELECT documents.clue, documents. answer, categories.category, clues.id, classifications.catid
+    const sql = `SELECT documents.clue, documents.answer, categories.category, clues.value, clues.round, clues.id, classifications.catid
                  FROM clues
                  JOIN classifications ON clues.id = classifications.clueid
                  JOIN categories ON classifications.catid = categories.id
