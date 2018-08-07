@@ -35,7 +35,7 @@ function getData() {
 }
 
 function checkAnswer() {
-    if (response.value === answerText.textContent) {
+    if(checkResponse(response.value, answerText.textContent)){
         answerText.classList.add('correct');
         outer.style.opacity = '1';
         score += parseInt(value.textContent);
