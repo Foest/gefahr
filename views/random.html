@@ -12,72 +12,17 @@
         <p id="round"></p>
         <p id="category"></p>
         <p id="value"></p>
-        <p id="clue_text"></p>
+        <p id="clue-text"></p>
         <input id="response" type="text" placeholder="Enter Response"></input>
         <button id="btn-submit">Submit</button>
         <button id="btn-next">Next</button>
-        <p id="answer_text"></p>
+        <div class="outer">
+            <p id="answer-text"></p>
+        </div>
         <p id="score">0</p>
     </div>
 </body>
 
 </html>
 
-<script>
-    const category = document.querySelector('#category');
-    const clueText = document.querySelector('#clue_text');
-    const answerText = document.querySelector('#answer_text');
-    const value = document.querySelector('#value');
-    const round = document.querySelector('#round');
-    const submitBtn = document.querySelector('#btn-submit');
-    const nextBtn = document.querySelector('#btn-next');
-    const response = document.querySelector('#response');
-    const scoreDisplay = document.querySelector('#score');
-    let clue;
-    let score = 0;
-
-    function getData() {
-        fetch('http://127.0.0.1:3000/random_question')
-            .then((res) => res.json())
-            .then((data) => {
-                clue = {
-                    clue: data.clue,
-                    answer: data.answer,
-                    category: data.category,
-                    value: data.value,
-                    round: data.round
-                }
-
-                category.textContent = clue.category;
-                clueText.textContent = clue.clue;
-                answerText.textContent = clue.answer;
-                value.textContent = clue.value;
-                round.textContent = `Round ${clue.round}`;
-            })
-            .catch((e) => {
-                console.log(e.message);
-            });
-    }
-
-    function checkAnswer(){
-        if(response.value === answerText.textContent){
-            score += parseInt(value.textContent);
-            scoreDisplay.textContent = `${score}`;
-            response.value = '';
-            getData();
-        } else {
-            score -= parseInt(value.textContent);
-            scoreDisplay.textContent = `${score}`;
-        }
-    }
-
-    window.addEventListener('keyup', (e) => {
-        if(e.key === 'Enter'){
-            checkAnswer();
-        }
-    });
-
-    submitBtn.addEventListener('click', checkAnswer);
-    nextBtn.addEventListener('click', getData);
-    getData();
-</script>
+<script src="/scripts/random.js"></script>
