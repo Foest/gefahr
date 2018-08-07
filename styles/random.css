@@ -1,18 +1,31 @@
 *{
     font-family: 'Courier New', Courier, monospace;
     color: azure;
+    background-color: rgb(6, 6, 179);
 }
 
 .body{
     font-family: 'Courier New', Courier, monospace;
-    color: azure;
     background-color: rgb(6, 6, 179);
 }
 
 .container{
+    color: azure;
     display: grid;
     background-color: rgb(6, 6, 179);
     justify-items: center;
+}
+
+.outer {
+    opacity: 0;
+  }
+
+.correct{
+    background-color: rgb(6, 199, 6);
+}
+
+.incorrect{
+    background-color: rgb(199, 12, 6);
 }
 
 #btn-next{
@@ -39,4 +52,10 @@
 
 #response{
     color: rgb(6, 6, 179);
+    background-color: azure;
+}
+
+#answer-text{
+    transition: 200ms;
+    color: azure;
 }
