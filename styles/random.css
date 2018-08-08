@@ -12,12 +12,21 @@
 .container{
     color: azure;
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "round category value"
+                         ". clue ."
+                         ". response ."
+                         ". submit ."
+                         ". next ."
+                         ". answer ."
+                         ". score .";
     background-color: rgb(6, 6, 179);
     justify-items: center;
 }
 
 .outer {
     opacity: 0;
+    grid-area: answer;
   }
 
 .correct{
@@ -56,6 +65,47 @@
 }
 
 #answer-text{
+    grid-area: "answer";
     transition: 200ms;
     color: azure;
 }
+
+#round{
+    grid-area: round;
+}
+
+#category{
+    grid-area: category;
+}
+
+#value{
+    grid-area: value;
+}
+
+#clue-text{
+    grid-area: clue;
+}
+
+#btn-submit{
+    grid-area: submit;
+}
+
+#btn-next{
+    grid-area: next;
+}
+
+#score{
+    grid-area: score;
+}
+
+#answer-text{
+    grid-area: answer;
+}
+
+#response{
+    grid-area: response;
+}
+
+
+
+
