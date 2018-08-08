@@ -10,6 +10,7 @@ const scoreDisplay = document.querySelector('#score');
 const outer = document.querySelector('.outer');
 let clue;
 let score = 0;
+let strikes = 0;
 
 function getData() {
     fetch('http://127.0.0.1:3000/random_question')
@@ -34,13 +35,27 @@ function getData() {
         });
 }
 
+
+function updateDisplay(){
+    if(strikes > 3){
+        score = 0;
+        scoreDisplay.textContent = `${score}`;
+        response.value = '';
+    } else {
+        scoreDisplay.textContent = `${score}`;
+        response.value = '';
+    }
+}
+
 function checkAnswer() {
+    const val = parseInt(value.textContent);
     if(checkResponse(response.value, answerText.textContent)){
         answerText.classList.add('correct');
         outer.style.opacity = '1';
-        score += parseInt(value.textContent);
-        scoreDisplay.textContent = `${score}`;
-        response.value = '';
+        score += val;
+        //scoreDisplay.textContent = `${score}`;
+        //response.value = '';
+        updateDisplay();
         setTimeout(() => {
             answerText.classList.remove('correct');
             outer.style.opacity = '0';
@@ -49,9 +64,11 @@ function checkAnswer() {
     } else {
         answerText.classList.add('incorrect');
         outer.style.opacity = '1';
-        score -= parseInt(value.textContent);
-        scoreDisplay.textContent = `${score}`;
-        response.value = '';
+        score -= val;
+        strikes += 1;
+        //scoreDisplay.textContent = `${score}`;
+        //response.value = '';
+        updateDisplay();
         setTimeout(() => {
             answerText.classList.remove('incorrect');
             outer.style.opacity = '0';
