@@ -19,7 +19,8 @@
                          ". submit ."
                          ". next ."
                          ". answer ."
-                         ". score .";
+                         ". score ."
+                         ". options .";
     background-color: rgb(6, 6, 179);
     justify-items: center;
 }
@@ -104,6 +105,15 @@
 
 #response{
     grid-area: response;
+}
+
+#easy-mode{
+}
+
+#options{
+    display: grid;
+    justify-items: center;
+    grid-area: options;
 }
 
 
