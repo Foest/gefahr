@@ -73,4 +73,26 @@ app.post('/random_question', (req, res) => {
     });
 });
 
+app.post('/random_game', (req, res) => {
+    //Get a random clue id
+    const mode = req.body.mode;
+    const rand_game = Math.floor(Math.random() * 3970) + 1;
+    const sql = `SELECT documents.clue, documents.answer, categories.category, clues.value, clues.round, clues.id, classifications.catid
+                 FROM clues
+                 JOIN classifications ON clues.id = classifications.clueid
+                 JOIN categories ON classifications.catid = categories.id
+                 JOIN documents ON clues.id = documents.id
+                 JOIN airdates ON clues.game = airdates.game
+                 WHERE airdates.game = ${rand_game}
+                 `;
+
+    db.all(sql, (err, rows) => {
+        if (err) {
+            console.log(err.message);
+            throw err;
+        }
+        res.json(rows);
+    });
+});
+
 app.listen(3000, () => console.log('Listening on port 3000'));
