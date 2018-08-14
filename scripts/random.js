@@ -53,6 +53,7 @@ function getData() {
 
 function updateDisplay(){
     if(strikes > 3){
+        strikes = 0;
         score = 0;
         scoreDisplay.textContent = `${score}`;
         response.value = '';
@@ -63,7 +64,7 @@ function updateDisplay(){
 }
 
 function checkAnswer() {
-    const val = parseInt(value.textContent);
+    const val = parseInt(value.textContent.replace(/\D/g, ''));
     if(checkResponse(response.value, answerText.textContent)){
         answerText.classList.add('correct');
         outer.style.opacity = '1';

@@ -68,6 +68,7 @@ app.post('/random_question', (req, res) => {
             console.log(err.message);
             throw err;
         }
+        if(row.round === 3) row.value = 2000;
         res.json(row);
     });
 });
