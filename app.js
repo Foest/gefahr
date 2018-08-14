@@ -19,6 +19,8 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/views/index.html
 
 app.get('/random', (req, res) => res.sendFile(path.join(__dirname + '/views/random.html')));
 
+app.get('/game', (req, res) => res.sendFile(path.join(__dirname + '/views/game.html')));
+
 app.get('/random_question', (req, res) => {
     //Get a random clue id
     const rand_id = Math.floor(Math.random() * 215815) + 1;
